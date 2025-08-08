@@ -5,16 +5,23 @@ const Header = (props) => {
       <h1>{props.name}</h1>
     </>
   )
-  const course = 'Half Stack application development'
 }
-
-const Content = (props) => {
-  console.log('Content name is: '+props.name +' with this many exercises: '+props.count)
+const Part = (props) => {
+    console.log('Content name is: '+props.name +' with this many exercises: '+props.count)
   return (
     <>
       <p>
         {props.name} {props.count}
       </p>
+    </>
+  )
+}
+const Content = (props) => {
+  return (
+    <>
+      <Part name={props.name[0]} count={props.count[0]}/>
+      <Part name={props.name[1]} count={props.count[1]}/>
+      <Part name={props.name[2]} count={props.count[2]}/>
     </>
   )
 }
@@ -41,9 +48,7 @@ const App = () => {
   return (
     <div>
       <Header name={course}/>
-      <Content name={part1} count={exercises1}/>
-      <Content name={part2} count={exercises2}/>
-      <Content name={part3} count={exercises3}/>
+      <Content name={[part1, part2, part3]} count={[exercises1, exercises2, exercises3]}/>
       <Total count = {exercises1 + exercises2 + exercises3}/>
     </div>
   )
